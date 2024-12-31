@@ -1,3 +1,5 @@
+// @ts-check
+/// <reference path="./index.d.ts" />
 const fs = require("fs-extra");
 const postcss = require("postcss");
 const util = require("util");
@@ -13,6 +15,7 @@ module.exports = (options = { plugins: [] }) => ({
   setup: function (build) {
     const { rootDir = options.rootDir || process.cwd() } = options;
     const tmpDirPath = tmp.dirSync().name;
+    let result;
     build.onResolve(
       { filter: /.\.(css)$/, namespace: "file" },
       async (args) => {
@@ -22,7 +25,7 @@ module.exports = (options = { plugins: [] }) => ({
           resolveDir: args.resolveDir,
           kind: args.kind,
         });
-        if (resolution.errors.length > 0) {
+        if (resolution.errors.length > 0 && result) {
           return { errors: result.errors }
         }
 
@@ -37,7 +40,7 @@ module.exports = (options = { plugins: [] }) => ({
         await ensureDir(tmpDir);
 
         const css = await readFile(sourceFullPath);
-        const result = await postcss(options.plugins).process(css, {
+        result = await postcss(options.plugins).process(css, {
           from: sourceFullPath,
           to: tmpFilePath,
         });

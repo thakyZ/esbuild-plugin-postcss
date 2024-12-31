@@ -21,22 +21,22 @@
     "postcss"
   ],
   "dependencies": {
-    "autoprefixer": "^10.2.4",
-    "css-tree": "^1.1.2",
-    "fs-extra": "^9.0.1",
-    "postcss": "^8.2.4",
-    "tmp": "^0.2.1"
+    "autoprefixer": "^10.4.20",
+    "css-tree": "^3.1.0",
+    "fs-extra": "^11.2.0",
+    "postcss": "^8.4.49",
+    "tmp": "^0.2.3"
   },
   "peerDependencies": {
-    "esbuild": "^0.24.0"
+    "esbuild": ">=0.24.0"
   },
   "devDependencies": {
-    "esbuild": "^0.24.0",
-    "husky": "^4.3.7",
-    "lint-staged": "^10.5.3",
-    "prettier": "^2.2.1",
+    "esbuild": "^0.24.2",
+    "husky": "^9.1.7",
+    "lint-staged": "^15.3.0",
+    "prettier": "^3.4.2",
     "tap-spec": "^5.0.0",
-    "tape": "^5.1.1"
+    "tape": "^5.9.0"
   },
   "husky": {
     "hooks": {
