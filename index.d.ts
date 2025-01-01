@@ -5,4 +5,6 @@ declare interface Options {
     plugins: postcss.Plugin;
 }
 
-export default function(options: Options): Plugin;
+declare const esbuildPluginPostCss: (options: Options) => Plugin;
+
+export = esbuildPluginPostCss;
