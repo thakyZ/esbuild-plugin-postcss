@@ -1,10 +1,10 @@
 import postcss from "postcss";
 import { Plugin } from "esbuild";
 
-declare interface Options {
-    plugins: postcss.Plugin & postcss.ExportedAPI;
+declare interface Options<T> {
+    plugins: T;
 }
 
-declare const esbuildPluginPostCss: (options: Options) => Plugin;
+declare const esbuildPluginPostCss: <T extends postcss.Plugin>(options: Options<T>) => Plugin;
 
 export = esbuildPluginPostCss;
